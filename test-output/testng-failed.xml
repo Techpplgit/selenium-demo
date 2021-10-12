@@ -10,7 +10,7 @@
           <include name="getMethodname"/>
           <include name="setUp"/>
           <include name="getResult"/>
-          <include name="handleFrames"/>
+          <include name="uploadFile"/>
         </methods>
       </class> <!-- testCases.HomePageTest -->
     </classes>

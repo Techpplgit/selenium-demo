@@ -1,6 +1,8 @@
 package base;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.WebDriver;
 
 public class testBase {
@@ -8,22 +10,24 @@ public class testBase {
 
 	public static WebDriver driver;
 
+	@SuppressWarnings("deprecation")
 	public void launchBrowser() throws Exception {
 		try {
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/resources/chromedriver");
 
-//			ChromeOptions options = new ChromeOptions();
-//			options.addArguments("--incognito");
-//			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-//			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--incognito");
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(capabilities);
 
 			driver.manage().window().maximize();
-			driver.manage().deleteAllCookies();
 			Thread.sleep(2500);
 
 			Thread.sleep(1500);
+
+			driver.navigate().refresh();
 
 		} catch (
 

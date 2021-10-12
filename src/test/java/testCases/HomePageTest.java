@@ -8,41 +8,33 @@ import util.testUtil;
 
 public class HomePageTest extends ExtentReportTest {
 
-	demo uploadObject = new demo();
+	demo demoObj = new demo();
 	testUtil util = new testUtil();
 	ExtentReportTest extentReports = new ExtentReportTest();
 
 	@Test(priority = 1)
 	public void uploadFile() throws Exception {
-		MyScreenRecorder.startRecording("TC1");
+		MyScreenRecorder.startRecording("Sanity");
 		launchBrowser();
 		Thread.sleep(1500);
 
-		uploadObject.uploadFile();
+		demoObj.assertURLAndLogin();
 		Thread.sleep(1500);
-		MyScreenRecorder.stopRecording();
 
-	}
-
-	@Test(priority = 2)
-	public void downloadSampleResume() throws Exception {
-		MyScreenRecorder.startRecording("TC2");
-
-		uploadObject.downloadSampleResume();
+		demoObj.windowHandlesAddContact();
 		Thread.sleep(1500);
-		MyScreenRecorder.stopRecording();
 
-	}
+		demoObj.readDynamicTableValues();
+		Thread.sleep(1500);
 
-	@Test(priority = 3)
-	public void handleFrames() throws Exception {
+		demoObj.addDocument();
+		Thread.sleep(1500);
 
-		MyScreenRecorder.startRecording("TC3");
-
-		uploadObject.windowHandles();
+		demoObj.checkLinks();
 		Thread.sleep(1500);
 
 		MyScreenRecorder.stopRecording();
 
 	}
+
 }
